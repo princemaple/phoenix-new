@@ -22,4 +22,5 @@ RUN mix archive.install --force https://github.com/phoenixframework/archives/raw
 
 VOLUME /var/app
 
-CMD sh
+ENTRYPOINT ["mix", "phoenix.new"]
+CMD ["/var/app"]
