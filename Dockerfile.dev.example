@@ -1,0 +1,23 @@
+FROM phoenix-new
+
+WORKDIR /var/app
+
+ARG MIX_ENV=prod
+ENV MIX_ENV $MIX_ENV
+
+COPY mix.exs /var/app/mix.exs
+COPY mix.lock /var/app/mix.lock
+
+RUN mix deps.get && mix deps.compile
+
+COPY .iex.exs /var/app/.iex.exs
+COPY config /var/app/config
+COPY lib /var/app/lib
+COPY priv /var/app/priv
+COPY web /var/app/web
+
+RUN mix phoenix.digest
+
+EXPOSE 4000
+
+ENTRYPOINT ["mix", "phoenix.server"]
