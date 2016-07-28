@@ -1,6 +1,6 @@
 FROM gliderlabs/alpine:edge
 
-ENV ELIXIR_VERSION 1.3.1
+ENV ELIXIR_VERSION 1.3.2
 
 RUN apk-install build-base erlang \
     erlang-inets erlang-erl-interface erlang-dev \
